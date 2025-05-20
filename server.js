@@ -13,9 +13,10 @@ import cors from "cors";
 const app = express();
 const server = createServer(app);
 const PORT = process.env.PORT;
+
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_ORIGIN,
     methods: ["GET", "POST"],
   },
 });
@@ -27,7 +28,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_ORIGIN,
     methods: ["GET", "POST"],
   })
 );
